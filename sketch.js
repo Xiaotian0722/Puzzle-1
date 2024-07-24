@@ -91,7 +91,7 @@ function draw() {
     textSize(24);
     fill(0);
     textAlign(CENTER, CENTER);
-    text('You found one of the lost pieces！', width / 2, height - 75);
+    text('You found one of the lost pieces！', width / 2, height - 90);
     nextButton.show(); // Show the next button
     cueButton.hide(); // Hide the cue button
   }
