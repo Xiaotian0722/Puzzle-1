@@ -15,8 +15,8 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(800, 600);
-  pieceSize = width / 3; // adjust the scale of every piece
+  createCanvas(windowWidth, windowHeight);
+  pieceSize = min(width / 3, height / 3); // adjust the scale of every piece
 
   for (let i = 0; i < 4; i++) {
     pieces.push(new Piece(i % 2, Math.floor(i / 2)));
@@ -39,6 +39,21 @@ function setup() {
   cueButton.size(50, 25);
   cueButton.mousePressed(toggleCue);
   cueButton.hide(); // Initially hide the cue button
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+  pieceSize = min(width / 3, height / 3); // adjust the scale of every piece
+
+  // Reposition buttons
+  startButton.position(width / 2 - 50, height / 2 + 100);
+  nextButton.position(width / 2 - 50, height - 75);
+  cueButton.position(width - 100, 50);
+
+  // Reset pieces
+  for (let piece of pieces) {
+    piece.reset();
+  }
 }
 
 function startGame() {
@@ -67,16 +82,16 @@ function draw() {
     text('Drag the pieces and release with mouse.', width / 2, height / 2 + 25);
   } else if (state === 'game') {
     if (showCue) {
-      image(puz, 250, 0, 300, 300);
+      image(puz, (width - pieceSize * 2) / 2, (height - pieceSize * 2) / 2, pieceSize * 2, pieceSize * 2);
     }
     drawBoard();
     drawPieces();
   } else if (state === 'success') {
-    image(puz, 250, 0, 300, 300);
+    image(puz, (width - pieceSize * 2) / 2, 0, pieceSize * 2, pieceSize * 2);
     textSize(24);
     fill(0);
     textAlign(CENTER, CENTER);
-    text('You found one of the lost pieces！', width / 2, height / 2 + 100);
+    text('You found one of the lost pieces！', width / 2, height / 2);
     nextButton.show(); // Show the next button
     cueButton.hide(); // Hide the cue button
   }
