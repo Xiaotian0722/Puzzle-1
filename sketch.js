@@ -5,7 +5,7 @@ let board = [];
 let pieceSize;
 let draggingPiece = null;
 let offsetX, offsetY;
-let nextPageURL = 'https://editor.p5js.org/xt.ma0722/sketches/TjD6pFy9G';
+let nextPageURL = 'https://xiaotian0722.github.io/Puzzle-2/';
 let startButton, nextButton, cueButton;
 let showCue = false;
 
