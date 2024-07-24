@@ -29,7 +29,7 @@ function setup() {
   startButton.mousePressed(startGame);
 
   nextButton = createButton('Next🧩');
-  nextButton.position(width / 2 - 50, height - 75);
+  nextButton.position(width / 2 - 50, pieceSize * 2 + 50);
   nextButton.size(100, 50);
   nextButton.mousePressed(goToNextPage);
   nextButton.hide(); // Initially hide the next button
@@ -91,7 +91,7 @@ function draw() {
     textSize(24);
     fill(0);
     textAlign(CENTER, CENTER);
-    text('You found one of the lost pieces！', width / 2, height - 90);
+    text('You found one of the lost pieces！', width / 2, pieceSize * 2 + 20);
     nextButton.show(); // Show the next button
     cueButton.hide(); // Hide the cue button
   }
