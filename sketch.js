@@ -1,17 +1,18 @@
-let state = 'start'; // states: 'start', 'game', 'success'
-let img, puz;
+let state = 'initial'; // states: 'initial', 'start', 'game', 'success'
+let img, puz, startImg;
 let pieces = [];
 let board = [];
 let pieceSize;
 let draggingPiece = null;
 let offsetX, offsetY;
 let nextPageURL = 'https://xiaotian0722.github.io/Puzzle-2/';
-let startButton, nextButton, cueButton;
+let startButton, nextButton, cueButton, continueButton;
 let showCue = false;
 
 function preload() {
   img = loadImage('pic/bg.png');
   puz = loadImage('pic/puzzle.jpg');
+  startImg = loadImage('pic/start.png');
 }
 
 function setup() {
@@ -23,10 +24,16 @@ function setup() {
     board.push(null);
   }
 
+  continueButton = createButton('Continue');
+  continueButton.position(width / 2 - 50, height / 2 + 200);
+  continueButton.size(100, 50);
+  continueButton.mousePressed(goToStartPage);
+
   startButton = createButton('Start');
   startButton.position(width / 2 - 50, height / 2 + 200);
   startButton.size(100, 50);
   startButton.mousePressed(startGame);
+  startButton.hide(); // Initially hide the start button
 
   nextButton = createButton('Next🧩');
   nextButton.position(width / 2 - 50, pieceSize * 2 + 50);
@@ -46,7 +53,8 @@ function windowResized() {
   pieceSize = min(width / 3, height / 3); // adjust the scale of every piece
 
   // Reposition buttons
-  startButton.position(width / 2 - 50, height / 2 + 100);
+  continueButton.position(width / 2 - 50, height / 2 + 200);
+  startButton.position(width / 2 - 50, height / 2 + 200);
   nextButton.position(width / 2 - 50, height - 75);
   cueButton.position(width - 100, 50);
 
@@ -54,6 +62,12 @@ function windowResized() {
   for (let piece of pieces) {
     piece.reset();
   }
+}
+
+function goToStartPage() {
+  state = 'start';
+  continueButton.hide();
+  startButton.show();
 }
 
 function startGame() {
@@ -72,7 +86,11 @@ function toggleCue() {
 
 function draw() {
   background(255);
-  if (state === 'start') {
+  
+  if (state === 'initial') {
+    // 初始页面
+    image(startImg, width / 2 - startImg.width / 2, height / 2 - startImg.height / 2);
+  } else if (state === 'start') {
     image(img, 100, height / 2, 300, 300);
     textSize(24);
     fill(0);
