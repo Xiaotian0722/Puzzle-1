@@ -88,7 +88,23 @@ function draw() {
   background(255);
   
   if (state === 'initial') {
-    image(startImg, windowWidth/4, 0, 1120, 960);
+    let imgRatio = startImg.width / startImg.height;
+    let maxImgWidth = width * 0.5;  // 50% of the screen width
+    let maxImgHeight = height * 0.5; // 50% of the screen height
+
+    let imgWidth = maxImgWidth;
+    let imgHeight = imgWidth / imgRatio;
+
+    if (imgHeight > maxImgHeight) {
+      imgHeight = maxImgHeight;
+      imgWidth = imgHeight * imgRatio;
+    }
+
+    // Calculate the position to center the image
+    let imgX = (width - imgWidth) / 2;
+    let imgY = (height - imgHeight) / 2;
+
+    image(startImg, imgX, imgY, imgWidth, imgHeight);
   } else if (state === 'start') {
     image(img, 100, height / 2, 300, 300);
     textSize(24);
