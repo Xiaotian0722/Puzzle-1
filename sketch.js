@@ -24,8 +24,8 @@ function setup() {
     board.push(null);
   }
 
-  continueButton = createButton('Continue');
-  continueButton.position(width / 2 - 50, height / 2 + 200);
+  continueButton = createButton('Start');
+  continueButton.position(width / 2 - 50, height / 2 + 150);
   continueButton.size(100, 50);
   continueButton.mousePressed(goToStartPage);
 
