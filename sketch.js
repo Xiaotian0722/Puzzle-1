@@ -88,7 +88,7 @@ function draw() {
   background(255);
   
   if (state === 'initial') {
-    image(startImg, width / 2, height / 2 - startImg.height / 2);
+    image(startImg, windowWidth / 2 - 200, windowHeight / 4 - 100, 1120, 960);
   } else if (state === 'start') {
     image(img, 100, height / 2, 300, 300);
     textSize(24);
