@@ -88,9 +88,9 @@ function draw() {
   background(255);
   
   if (state === 'initial') {
-    let imgRatio = startImg.width / startImg.height;
-    let maxImgWidth = width * 0.7;  // 50% of the screen width
-    let maxImgHeight = height * 0.7; // 50% of the screen height
+        let imgRatio = startImg.width / startImg.height;
+    let maxImgWidth = width * 0.7;  // 70% of the screen width
+    let maxImgHeight = height * 0.6; // 60% of the screen height
 
     let imgWidth = maxImgWidth;
     let imgHeight = imgWidth / imgRatio;
@@ -100,10 +100,11 @@ function draw() {
       imgWidth = imgHeight * imgRatio;
     }
 
-    // Calculate the position to center the image
+    // Calculate the position to center the image horizontally and align with top
     let imgX = (width - imgWidth) / 2;
+    let imgY = 0; // Align image to the top of the canvas
 
-    image(startImg, imgX, 0, imgWidth, imgHeight);
+    image(startImg, imgX, imgY, imgWidth, imgHeight);
   } else if (state === 'start') {
     image(img, 100, height / 2, 300, 300);
     textSize(24);
