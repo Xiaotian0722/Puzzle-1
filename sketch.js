@@ -46,7 +46,7 @@ function windowResized() {
   pieceSize = min(width / 3, height / 3); // adjust the scale of every piece
 
   // Reposition buttons
-  startButton.position(width / 2 - 50, height / 2 + 150);
+  startButton.position(width / 2 - 50, height / 2 + 200);
   nextButton.position(width / 2 - 50, height - 75);
   cueButton.position(width - 100, 50);
 
