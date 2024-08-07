@@ -10,7 +10,7 @@ let startButton, nextButton, cueButton;
 let showCue = false;
 
 function preload() {
-  img = loadImage('pic/bg.webp');
+  img = loadImage('pic/bg.png');
   puz = loadImage('pic/puzzle.jpg');
 }
 
@@ -77,9 +77,10 @@ function draw() {
     textSize(24);
     fill(0);
     textAlign(CENTER, CENTER);
-    text('Welcome to Mindful Mosaics!', width / 2, height / 2 - 125);
-    text('Help Anixety put every puzzle piece into right place!', width / 2, height / 2 - 50);
+    text('Looks like Mr.Bee needs some help!', width / 2, height / 2 - 125);
+    text('Help him put every puzzle piece into right place!', width / 2, height / 2 - 50);
     text('Drag the pieces and release with mouse.', width / 2, height / 2 + 25);
+    text('Time is unlimited. You can enjoy solving all the mysteries!', width / 2, height / 2 + 100);
   } else if (state === 'game') {
     if (showCue) {
       image(puz, (width - pieceSize * 2) / 2, (height - pieceSize * 2) / 2, pieceSize * 2, pieceSize * 2);
